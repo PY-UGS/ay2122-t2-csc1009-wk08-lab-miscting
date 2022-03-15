@@ -9,13 +9,21 @@ public class CheckingAccount{
         this.accNumber = 0;
     }
     
-    public void deposit(double amount) {
-        balance += amount;
+    public void deposit(double amount) throws Exception {
+        if(amount > 0) {
+            balance += amount;
+        }
+        else {
+            throw new Exception("Deposit amount should be non-negative");
+        }
     }
     
-    public boolean withdraw(double amount) throws InsufficientFundsExceptions {
+    public boolean withdraw(double amount) throws Exception {
         if(balance - amount < 0) {
             throw new InsufficientFundsExceptions(balance - amount);
+        }
+        else if(amount < 0) {
+            throw new Exception("Withdraw amount should be non-negative");
         }
         balance -= amount;
         return true;

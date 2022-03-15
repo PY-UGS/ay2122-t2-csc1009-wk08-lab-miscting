@@ -8,6 +8,8 @@ public class BankDemoTest {
         try{
             System.out.print("Deposit amount: $");
             account1.deposit(input.nextDouble());
+            
+
             System.out.print("Withdraw amount: $");
             
             if(account1.withdraw(input.nextDouble()) == true) {
@@ -17,6 +19,9 @@ public class BankDemoTest {
         }
         catch(InsufficientFundsExceptions ife) {
             System.out.println("Sorry, but your account is short by: $" + Math.abs(ife.getAmount()));
+        }
+        catch(Exception e) {
+            System.out.println("Sorry, but deposit amount must be non-negative");
         }
         finally {
             input.close();
